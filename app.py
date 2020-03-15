@@ -42,10 +42,10 @@ def your_url():
         else:
             f = request.files['file']
             full_name = request.form['code'] + f.filename
-            f.save(os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + full_name)
-            file_from = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + full_name
+#            f.save(os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + full_name)
+#            file_from = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + full_name
             file_to = '/' + full_name
-            transferData.upload_file(file_from, file_to)
+            transferData.upload_file(f, file_to)
             urls[request.form['code']] = {'file':full_name}
 
 
