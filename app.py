@@ -15,13 +15,12 @@ class TransferData:
     def __init__(self, access_token):
         self.access_token = access_token
 
-    def upload_file(self, file_from, file_to):
+    def upload_file(self, f, file_to):
         """upload a file to Dropbox using API v2
         """
         dbx = dropbox.Dropbox(self.access_token)
 
-        with open(file_from, 'rb') as f:
-            dbx.files_upload(f.read(), file_to)
+        dbx.files_upload(f.read(), file_to)
 transferData = TransferData(API_KEY)
 
 @app.route('/your-url', methods=['GET','POST'])
